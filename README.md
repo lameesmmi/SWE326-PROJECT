@@ -48,7 +48,6 @@ This project is part of SWE 326: Software Testing. In Phase 3, we developed and 
 - Master Test Plan (including Phase 1, 2, and 3)
 - JUnit test classes
 - Coverage and test result screenshots
-- This README file
 
 ---
 
