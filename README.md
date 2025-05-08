@@ -36,9 +36,9 @@ Task 1 Step 3-1
 ---
 
 ## 📁 Folder Structure
-/src # Original source code + JUnit Test Classes
-/test/ # Summary of test executions 
-/screenshots/ # Execution and coverage screenshots
+/src Original source code + JUnit Test Classes
+/test Summary of test executions 
+/screenshots Execution and coverage screenshots
 ---
 
 ## 🛠️ Tools Used
