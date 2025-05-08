@@ -1,0 +1,158 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpeedControl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">appCruise</a>
+</div>
+
+<h1>Coverage Summary for Class: SpeedControl (appCruise)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SpeedControl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package appCruise;
+&nbsp;
+&nbsp;
+&nbsp; class SpeedControl implements Runnable {
+&nbsp;  final static int DISABLED = 0; //speed control states
+&nbsp;  final static int ENABLED  = 1;
+<b class="nc">&nbsp;  volatile private int state = DISABLED;  //initial state</b>
+<b class="nc">&nbsp;  volatile private int setSpeed = 0;      //target cruise control speed</b>
+&nbsp;  volatile private Thread speedController;
+&nbsp;  volatile private CarSpeed cs;         //interface to control speed of engine
+&nbsp;  volatile private CruiseDisplay disp;
+&nbsp;
+<b class="nc">&nbsp;  SpeedControl(CarSpeed cs, CruiseDisplay disp){</b>
+<b class="nc">&nbsp;    this.cs=cs; this.disp=disp;</b>
+<b class="nc">&nbsp;    disp.disabled(); disp.record(0);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  synchronized void recordSpeed(){
+<b class="nc">&nbsp;    setSpeed=cs.getSpeed(); disp.record(setSpeed);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  synchronized void clearSpeed(){
+<b class="nc">&nbsp;    if (state==DISABLED) {setSpeed=10;disp.record(setSpeed);}</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  synchronized void enableControl(){
+<b class="nc">&nbsp;    if (state==DISABLED) {</b>
+<b class="nc">&nbsp;	  disp.enabled();</b>
+<b class="nc">&nbsp;      speedController= new Thread(this);</b>
+<b class="nc">&nbsp;      speedController.start();</b>
+<b class="nc">&nbsp;      state=ENABLED;</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;  synchronized void disableControl(){
+<b class="nc">&nbsp;    if (state==ENABLED)  {disp.disabled(); state=DISABLED;}</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  synchronized public void run() {     // the speed controller thread
+&nbsp;    try {
+<b class="nc">&nbsp;   	  while (state==ENABLED) {</b>
+<b class="nc">&nbsp;		double error = (float)(setSpeed-cs.getSpeed())/6.0;</b>
+<b class="nc">&nbsp;		double steady = (double)setSpeed/12.0;</b>
+<b class="nc">&nbsp;		cs.setThrottle(steady+error); //simplified feed back control</b>
+<b class="nc">&nbsp;	    wait(500);</b>
+<b class="nc">&nbsp;      } </b>
+<b class="nc">&nbsp;    } catch (InterruptedException e) {}</b>
+<b class="nc">&nbsp;    speedController=null;</b>
+&nbsp;  }
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-08 15:50</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CruiseControl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">appCruise</a>
+</div>
+
+<h1>Coverage Summary for Class: CruiseControl (appCruise)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CruiseControl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/38)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CruiseControl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$4</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$5</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$6</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CruiseControl$7</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/*
+&nbsp; CruiseControl.java
+&nbsp; */
+&nbsp;
+&nbsp;package appCruise;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.*;
+&nbsp;import javax.swing.*;
+&nbsp;
+&nbsp;public class CruiseControl extends JFrame {
+&nbsp;
+&nbsp;    CarSimulator car;
+&nbsp;    CruiseDisplay disp;
+&nbsp;    Controller control;
+&nbsp;    Button engineOn;
+&nbsp;    Button engineOff;
+&nbsp;    Button accelerate;
+&nbsp;    Button brake;
+&nbsp;    Button on;
+&nbsp;    Button off;
+&nbsp;    Button resume;
+&nbsp;
+&nbsp;    public  CruiseControl()
+<b class="nc">&nbsp;    {</b>
+<b class="nc">&nbsp;    	init();                     </b>
+<b class="nc">&nbsp;    	setSize(600,400);           // Set the size of the frame</b>
+<b class="nc">&nbsp;    	setVisible(true);           // Show the frame</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    
+&nbsp;    public  void init() {
+&nbsp;        //String fixed  = getParameter(&quot;fixed&quot;);
+&nbsp;        //boolean isfixed = fixed!=null?fixed.equals(&quot;TRUE&quot;):false;
+<b class="nc">&nbsp;    	boolean isfixed = true;</b>
+<b class="nc">&nbsp;        setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        car = new CarSimulator();</b>
+<b class="nc">&nbsp;        add(&quot;Center&quot;,car);</b>
+<b class="nc">&nbsp;        disp = new CruiseDisplay();</b>
+<b class="nc">&nbsp;        add(&quot;East&quot;,disp);</b>
+<b class="nc">&nbsp;        control = new Controller(car,disp,isfixed);</b>
+&nbsp;		
+<b class="nc">&nbsp;        engineOn = new Button(&quot;engineOn&quot;);</b>
+<b class="nc">&nbsp;        engineOn.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              car.engineOn();</b>
+<b class="nc">&nbsp;              control.engineOn();</b>
+&nbsp;            }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        engineOff = new Button(&quot;engineOff&quot;);</b>
+<b class="nc">&nbsp;        engineOff.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              car.engineOff();</b>
+<b class="nc">&nbsp;              control.engineOff();</b>
+&nbsp;            }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        accelerate = new Button(&quot;accelerate&quot;);</b>
+<b class="nc">&nbsp;        accelerate.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              car.accelerate();</b>
+<b class="nc">&nbsp;              control.accelerator();</b>
+&nbsp;             }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        brake = new Button(&quot;brake&quot;);</b>
+<b class="nc">&nbsp;        brake.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              car.brake();</b>
+<b class="nc">&nbsp;              control.brake();</b>
+&nbsp;             }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        on = new Button(&quot;on&quot;);</b>
+<b class="nc">&nbsp;        on.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              control.on();</b>
+&nbsp;            }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        off = new Button(&quot;off&quot;);</b>
+<b class="nc">&nbsp;        off.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              control.off();</b>
+&nbsp;            }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        resume = new Button(&quot;resume&quot;);</b>
+<b class="nc">&nbsp;        resume.addActionListener(new ActionListener() {</b>
+&nbsp;            public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;              control.resume();</b>
+&nbsp;            }
+&nbsp;         });
+&nbsp;		
+<b class="nc">&nbsp;        Panel p1 = new Panel();</b>
+<b class="nc">&nbsp;        p1.setLayout(new FlowLayout());</b>
+<b class="nc">&nbsp;        p1.add(engineOn);</b>
+<b class="nc">&nbsp;        p1.add(engineOff);</b>
+<b class="nc">&nbsp;        p1.add(accelerate);</b>
+<b class="nc">&nbsp;        p1.add(brake);</b>
+<b class="nc">&nbsp;        p1.add(on);</b>
+<b class="nc">&nbsp;        p1.add(off);</b>
+<b class="nc">&nbsp;        p1.add(resume);</b>
+<b class="nc">&nbsp;        add(&quot;South&quot;,p1);</b>
+&nbsp;   }
+&nbsp;
+&nbsp;    public void stop() {
+<b class="nc">&nbsp;        car.engineOff(); //kill engine thread</b>
+<b class="nc">&nbsp;        control.engineOff();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public  static void main(String[] args)
+&nbsp;    
+&nbsp;        {
+<b class="nc">&nbsp;               new CruiseControl();</b>
+&nbsp;        }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-08 15:50</div>
+</div>
+</body>
+</html>

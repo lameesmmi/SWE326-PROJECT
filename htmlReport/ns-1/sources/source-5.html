@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CruiseDisplay</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">appCruise</a>
+</div>
+
+<h1>Coverage Summary for Class: CruiseDisplay (appCruise)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CruiseDisplay</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package appCruise;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;
+&nbsp;public class CruiseDisplay extends Canvas {
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    private int recorded     = 0;     //recorded speed</b>
+<b class="nc">&nbsp;    private boolean cruiseOn = false; //cruise control state</b>
+&nbsp;    private final static int botY = 200;
+<b class="nc">&nbsp;    private Font small = new Font(&quot;Helvetica&quot;,Font.BOLD,14);</b>
+<b class="nc">&nbsp;    private Font big = new Font(&quot;Helvetica&quot;,Font.BOLD,18);</b>
+&nbsp;
+&nbsp;    public CruiseDisplay() {
+<b class="nc">&nbsp;        super();</b>
+<b class="nc">&nbsp;        setSize(150,260);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    Image offscreen;
+&nbsp;    Dimension offscreensize;
+&nbsp;    Graphics offgraphics;
+&nbsp;
+&nbsp;    public void backdrop() {
+<b class="nc">&nbsp;        Dimension d = getSize();</b>
+<b class="nc">&nbsp;	    if ((offscreen == null) || (d.width != offscreensize.width)</b>
+&nbsp;	                            || (d.height != offscreensize.height)) {
+<b class="nc">&nbsp;	        offscreen = createImage(d.width, d.height);</b>
+<b class="nc">&nbsp;	        offscreensize = d;</b>
+<b class="nc">&nbsp;	        offgraphics = offscreen.getGraphics();</b>
+<b class="nc">&nbsp;	        offgraphics.setFont(small);</b>
+&nbsp;	    }
+<b class="nc">&nbsp;        offgraphics.setColor(Color.black);</b>
+<b class="nc">&nbsp;        offgraphics.fillRect(0, 0, getSize().width, getSize().height);</b>
+<b class="nc">&nbsp;        offgraphics.setColor(Color.white);</b>
+<b class="nc">&nbsp;        offgraphics.drawRect(5,10,getSize().width-15,getSize().height-40);</b>
+<b class="nc">&nbsp;        offgraphics.setColor(Color.blue);</b>
+<b class="nc">&nbsp;        offgraphics.fillRect(6,11,getSize().width-17,getSize().height-42);</b>
+&nbsp;     }
+&nbsp;
+&nbsp;    public void paint(Graphics g) {
+<b class="nc">&nbsp;         update(g);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void update(Graphics g) {
+<b class="nc">&nbsp;        backdrop();</b>
+&nbsp;        // display recorded speed
+<b class="nc">&nbsp;        offgraphics.setColor(Color.white);</b>
+<b class="nc">&nbsp;        offgraphics.setFont(big);</b>
+<b class="nc">&nbsp;        offgraphics.drawString(&quot;Cruise Control&quot;,10,35);</b>
+<b class="nc">&nbsp;        offgraphics.setFont(small);</b>
+<b class="nc">&nbsp;        drawRecorded(offgraphics,20,80,recorded);</b>
+<b class="nc">&nbsp;        if (cruiseOn)</b>
+<b class="nc">&nbsp;            offgraphics.drawString(&quot;Enabled&quot;,20,botY+15);</b>
+&nbsp;        else
+<b class="nc">&nbsp;            offgraphics.drawString(&quot;Disabled&quot;,20,botY+15);</b>
+<b class="nc">&nbsp;        if (cruiseOn)</b>
+<b class="nc">&nbsp;           offgraphics.setColor(Color.green);</b>
+&nbsp;        else
+<b class="nc">&nbsp;           offgraphics.setColor(Color.red);</b>
+<b class="nc">&nbsp;        offgraphics.fillArc(90,botY,20,20,0,360);</b>
+<b class="nc">&nbsp;        g.drawImage(offscreen, 0, 0, null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void drawRecorded(Graphics g, int x, int y, int speed) {
+<b class="nc">&nbsp;        g.drawString(&quot;Cruise Speed&quot;,x,y+10);</b>
+<b class="nc">&nbsp;        g.drawRect(x+20,y+20,50,20);</b>
+<b class="nc">&nbsp;        g.setFont(big);</b>
+<b class="nc">&nbsp;        g.drawString(String.valueOf(speed+20),x+30,y+37);</b>
+<b class="nc">&nbsp;        g.setFont(small);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void enabled() {
+<b class="nc">&nbsp;        cruiseOn = true;</b>
+<b class="nc">&nbsp;        repaint();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void disabled() {
+<b class="nc">&nbsp;        cruiseOn = false;</b>
+<b class="nc">&nbsp;        repaint();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void record(int speed) {
+<b class="nc">&nbsp;        recorded=speed;</b>
+<b class="nc">&nbsp;        repaint();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-08 15:50</div>
+</div>
+</body>
+</html>

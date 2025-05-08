@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CarSimulatorTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">appCruise</a>
+</div>
+
+<h1>Coverage Summary for Class: CarSimulatorTest (appCruise)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CarSimulatorTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (22/22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package appCruise;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.BeforeEach;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import static org.junit.jupiter.api.Assertions.*;
+&nbsp;
+<b class="fc">&nbsp;class CarSimulatorTest {</b>
+&nbsp;
+&nbsp;    private CarSimulator car;
+&nbsp;
+&nbsp;    @BeforeEach
+&nbsp;    void setUp() {
+<b class="fc">&nbsp;        car = new CarSimulator();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testInitialSpeedIsZero() {
+<b class="fc">&nbsp;        assertEquals(0, car.getSpeed(), &quot;Initial speed should be 0&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testEngineOn() {
+<b class="fc">&nbsp;        car.engineOn();</b>
+<b class="fc">&nbsp;        assertTrue(car.getSpeed() &gt;= 0); // Should not crash or throw</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testAccelerateIncreasesThrottle() {
+<b class="fc">&nbsp;        car.engineOn();</b>
+<b class="fc">&nbsp;        car.accelerate();</b>
+<b class="fc">&nbsp;        car.accelerate();</b>
+&nbsp;        // We can&#39;t directly read throttle (it&#39;s private), but we assume speed will rise in time
+&nbsp;        // So we just ensure no exception and run stability
+<b class="fc">&nbsp;        assertTrue(car.getSpeed() &gt;= 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testBrakeSetsThrottleToZeroOrIncreasesBrake() {
+<b class="fc">&nbsp;        car.engineOn();</b>
+<b class="fc">&nbsp;        car.accelerate(); // Increase throttle</b>
+<b class="fc">&nbsp;        car.brake();      // Should set throttle to 0</b>
+<b class="fc">&nbsp;        car.brake();      // Should increase brake pedal</b>
+<b class="fc">&nbsp;        assertTrue(car.getSpeed() &gt;= 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testSetThrottleLimits() {
+<b class="fc">&nbsp;        car.setThrottle(15.0); // Too high</b>
+<b class="fc">&nbsp;        assertTrue(car.getSpeed() &gt;= 0); // Speed should be within bounds</b>
+<b class="fc">&nbsp;        car.setThrottle(-5.0); // Too low</b>
+<b class="fc">&nbsp;        assertTrue(car.getSpeed() &gt;= 0); // Should remain stable</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void testEngineOffResetsState() {
+<b class="fc">&nbsp;        car.engineOn();</b>
+<b class="fc">&nbsp;        car.accelerate();</b>
+<b class="fc">&nbsp;        car.engineOff();</b>
+<b class="fc">&nbsp;        assertEquals(0, car.getSpeed(), &quot;Speed should reset to 0 after engine off&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-08 15:50</div>
+</div>
+</body>
+</html>
