@@ -36,16 +36,9 @@ Task 1 Step 3-1
 ---
 
 ## 📁 Folder Structure
-/src/ # Original source code
-/test/ # JUnit test classes
-├── CruiseControlTest.java
-├── SpeedManagerTest.java
-└── BrakeSystemTest.java
+/src # Original source code + JUnit Test Classes
+/test/ # Summary of test executions 
 /screenshots/ # Execution and coverage screenshots
-/docs/ # Master Test Plan and documentation
-└── Master-Test-Plan.docx
-
-
 ---
 
 ## 🛠️ Tools Used
@@ -53,7 +46,6 @@ Task 1 Step 3-1
 - **EclEmma** (JaCoCo) for code coverage analysis
 - **Eclipse IDE**
 - **Git & GitHub** for collaboration
-
 ---
 
 ## 📄 Deliverables (Due: May 11, 2025)
